@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal portfolio of Doddabasamma Chandrashekhar Hoolageri, a 3rd Semester B.Tech CSIT student.">
+  <title>Doddabasamma Chandrashekhar Hoolageri | CSIT Student Portfolio</title>
+  <style>
+    :root {
+      --bg: #f7f8fc;
+      --surface: #ffffff;
+      --text: #172033;
+      --muted: #5e687a;
+      --primary: #3157d5;
+      --primary-dark: #2445b0;
+      --accent: #e9edff;
+      --border: #e2e6ef;
+      --shadow: 0 12px 35px rgba(31, 45, 78, 0.08);
+      --radius: 18px;
+      --max-width: 1080px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(247, 248, 252, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(226, 230, 239, 0.8);
+    }
+
+    nav {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .brand span { color: var(--primary); }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      font-size: 0.94rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover { color: var(--primary); }
+
+    section { padding: 78px 0; }
+
+    .hero {
+      padding: 105px 0 85px;
+      background:
+        radial-gradient(circle at 90% 15%, rgba(49, 87, 213, 0.12), transparent 28%),
+        radial-gradient(circle at 5% 75%, rgba(75, 150, 255, 0.09), transparent 25%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary);
+      background: var(--accent);
+      border: 1px solid #dce3ff;
+      border-radius: 999px;
+      padding: 7px 13px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 6vw, 4.7rem);
+      line-height: 1.05;
+      letter-spacing: -0.055em;
+      margin: 0 0 22px;
+    }
+
+    .hero h1 span { color: var(--primary); }
+
+    .lead {
+      max-width: 690px;
+      font-size: 1.15rem;
+      color: var(--muted);
+      margin: 0 0 30px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 10px;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      transition: transform 0.2s, border-color 0.2s, background 0.2s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      border-color: #bcc7e9;
+    }
+
+    .button.primary {
+      color: #fff;
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .button.primary:hover { background: var(--primary-dark); }
+
+    .hero-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card .initials {
+      width: 76px;
+      height: 76px;
+      display: grid;
+      place-items: center;
+      border-radius: 20px;
+      color: #fff;
+      background: var(--primary);
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin-bottom: 22px;
+    }
+
+    .hero-card p {
+      color: var(--muted);
+      margin: 8px 0 0;
+    }
+
+    .section-heading {
+      max-width: 700px;
+      margin-bottom: 34px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(1.9rem, 4vw, 2.65rem);
+      line-height: 1.15;
+      letter-spacing: -0.035em;
+      margin: 0 0 10px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .info-card, .project-card, .goal-card, .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .info-card {
+      padding: 28px;
+    }
+
+    .info-card h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+
+    .info-card p { color: var(--muted); margin-bottom: 0; }
+
+    .projects {
+      background: #eef1f8;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .project-group {
+      grid-column: 1 / -1;
+      display: grid;
+      gap: 14px;
+    }
+
+    .project-group-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .project-group-label::before {
+      content: "";
+      width: 28px;
+      height: 2px;
+      background: var(--primary);
+      border-radius: 999px;
+    }
+
+    .project-group-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .project-group-grid .project-card,
+    .additional-project .project-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-group-grid .project-card::before,
+    .additional-project .project-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--primary);
+    }
+
+    .additional-project {
+      grid-column: 1 / -1;
+      margin-top: 4px;
+    }
+
+    .project-card {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      min-height: 290px;
+    }
+
+    .project-number {
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .project-card h3 {
+      margin: 8px 0 10px;
+      font-size: 1.35rem;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      margin: 0 0 22px;
+    }
+
+    .project-card .project-link {
+      margin-top: auto;
+      color: var(--primary);
+      font-weight: 750;
+    }
+
+    .journey {
+      margin-top: 22px;
+      padding: 25px 28px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .journey p { color: var(--muted); margin: 0; }
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .skill {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      padding: 18px 20px;
+      border-radius: 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: 0 7px 22px rgba(31, 45, 78, 0.05);
+      color: #344056;
+      font-weight: 700;
+    }
+
+    .skill::before {
+      content: "✓";
+      display: inline-grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      flex: 0 0 28px;
+      margin-right: 12px;
+      border-radius: 8px;
+      background: var(--accent);
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 800;
+    }
+
+    .goal-card {
+      padding: 32px;
+      max-width: 900px;
+    }
+
+    .goal-card p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 1.05rem;
+    }
+
+    .contact {
+      padding-bottom: 95px;
+    }
+
+    .contact-card {
+      padding: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .contact-card h2 { margin: 0 0 8px; }
+
+    .contact-card p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 25px 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 800px) {
+      .project-group-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .additional-project {
+        grid-column: 1;
+      }
+
+      .hero-grid, .about-grid, .project-grid, .skills {
+        grid-template-columns: 1fr;
+      }
+
+      .hero { padding-top: 75px; }
+
+      .contact-card {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      nav {
+        align-items: flex-start;
+        padding: 16px 0;
+        flex-direction: column;
+      }
+
+      .nav-links { gap: 12px 18px; }
+    }
+
+    @media (max-width: 500px) {
+      .container { width: min(var(--max-width), calc(100% - 28px)); }
+      section { padding: 58px 0; }
+      h1 { font-size: 2.55rem; }
+      .hero-card, .project-card, .info-card, .goal-card, .contact-card { padding: 22px; }
+    }
+  
+    /* Visual refinement: modern dark professional portfolio */
+    :root {
+      --bg: #0b1020;
+      --surface: rgba(18, 26, 46, 0.78);
+      --text: #eef4ff;
+      --muted: #a9b5ca;
+      --primary: #7aa2ff;
+      --primary-dark: #5d83e6;
+      --accent: rgba(122, 162, 255, 0.12);
+      --border: rgba(145, 165, 205, 0.18);
+      --shadow: 0 18px 55px rgba(0, 0, 0, 0.28);
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 12% 8%, rgba(74, 108, 255, 0.14), transparent 27rem),
+        radial-gradient(circle at 88% 30%, rgba(139, 92, 246, 0.10), transparent 30rem),
+        linear-gradient(180deg, #080d19 0%, #0b1020 42%, #0d1424 100%);
+      color: var(--text);
+    }
+
+    header {
+      background: rgba(8, 13, 25, 0.78);
+      border-bottom-color: rgba(145, 165, 205, 0.14);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.14);
+    }
+
+    .brand span,
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      color: #aebbd0;
+    }
+
+    section {
+      position: relative;
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at 78% 18%, rgba(74, 108, 255, 0.18), transparent 25rem),
+        radial-gradient(circle at 12% 82%, rgba(139, 92, 246, 0.12), transparent 24rem);
+    }
+
+    .eyebrow {
+      color: #9bb7ff;
+      background: rgba(122, 162, 255, 0.10);
+      border-color: rgba(122, 162, 255, 0.28);
+    }
+
+    .hero h1 span {
+      color: #8eaeff;
+    }
+
+    .lead,
+    .info-card p,
+    .project-card p,
+    .goal-card p,
+    .contact-card p,
+    .journey p {
+      color: var(--muted);
+    }
+
+    .button {
+      border-color: rgba(145, 165, 205, 0.24);
+      background: rgba(255, 255, 255, 0.035);
+      color: #edf3ff;
+      transition: transform 0.2s ease, border-color 0.2s ease,
+                  background 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      border-color: rgba(122, 162, 255, 0.55);
+      background: rgba(122, 162, 255, 0.08);
+      box-shadow: 0 10px 28px rgba(40, 70, 150, 0.20);
+    }
+
+    .button.primary {
+      background: linear-gradient(135deg, #5f82f0, #7c67df);
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 10px 28px rgba(95, 130, 240, 0.25);
+    }
+
+    .button.primary:hover {
+      background: linear-gradient(135deg, #6b8df5, #886fe8);
+    }
+
+    .hero-card,
+    .project-card,
+    .info-card,
+    .goal-card,
+    .contact-card,
+    .journey,
+    .skill {
+      background: linear-gradient(
+        145deg,
+        rgba(24, 34, 58, 0.88),
+        rgba(13, 20, 36, 0.82)
+      );
+      border-color: rgba(145, 165, 205, 0.16);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before,
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(2px);
+    }
+
+    .hero-card::before {
+      width: 180px;
+      height: 180px;
+      top: -90px;
+      right: -60px;
+      background: rgba(95, 130, 240, 0.13);
+    }
+
+    .hero-card::after {
+      width: 130px;
+      height: 130px;
+      bottom: -70px;
+      left: -45px;
+      background: rgba(139, 92, 246, 0.10);
+    }
+
+    .initials {
+      background: linear-gradient(135deg, #5f82f0, #7c67df);
+      box-shadow: 0 12px 30px rgba(95, 130, 240, 0.25);
+    }
+
+    .projects {
+      background:
+        linear-gradient(180deg, rgba(13, 20, 36, 0.94), rgba(11, 16, 29, 0.96));
+    }
+
+    .project-card {
+      transition: transform 0.22s ease, border-color 0.22s ease,
+                  box-shadow 0.22s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(122, 162, 255, 0.34);
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.34);
+    }
+
+    .project-group-grid .project-card::before,
+    .additional-project .project-card::before {
+      background: linear-gradient(90deg, #6f8ff5, #8b6de3);
+    }
+
+    .project-number,
+    .project-card .project-link {
+      color: #8eaeff;
+    }
+
+    .project-group-label {
+      color: #91a0b8;
+    }
+
+    .project-group-label::before {
+      background: linear-gradient(90deg, #6f8ff5, #8b6de3);
+    }
+
+    .journey {
+      background: rgba(18, 27, 46, 0.62);
+    }
+
+    .skill {
+      color: #dce6f8;
+      transition: transform 0.2s ease, border-color 0.2s ease,
+                  background 0.2s ease;
+    }
+
+    .skill:hover {
+      transform: translateY(-3px);
+      border-color: rgba(122, 162, 255, 0.30);
+      background: linear-gradient(
+        145deg,
+        rgba(30, 43, 72, 0.92),
+        rgba(17, 25, 43, 0.88)
+      );
+    }
+
+    .skill::before {
+      background: rgba(122, 162, 255, 0.13);
+      color: #9bb7ff;
+    }
+
+    .goal-card {
+      border-color: rgba(122, 162, 255, 0.18);
+    }
+
+    .contact {
+      background:
+        radial-gradient(circle at 50% 100%, rgba(74, 108, 255, 0.08), transparent 28rem);
+    }
+
+    footer {
+      border-top-color: rgba(145, 165, 205, 0.14);
+      color: #8795ac;
+      background: rgba(6, 10, 18, 0.55);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .button,
+      .project-card,
+      .skill {
+        transition: none;
+      }
+    }
+
+</style>
+</head>
+
+<body>
+  <header>
+    <nav class="container" aria-label="Main navigation">
+      <a class="brand" href="#top">Doddabasamma<span>.</span></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#goals">Goals</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">B.Tech CSIT · 3rd Semester</div>
+          <h1>Learning by <span>building</span> and solving.</h1>
+          <p class="lead">
+            I’m Doddabasamma Chandrashekhar Hoolageri, a Computer Science and Information Technology student interested in programming, problem-solving, mathematics, and practical technical projects.
+          </p>
+          <div class="buttons">
+            <a class="button primary" href="#projects">View my work</a>
+            <a class="button" href="https://github.com/dbasammachoolageri-git" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="initials">DCH</div>
+          <strong>Computer Science & Information Technology</strong>
+          <p>Building fundamentals through coding practice, projects, documentation, and consistent learning throughout my B.Tech.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <h2>About Me</h2>
+          <p>A short introduction to what I am learning and what I enjoy working on.</p>
+        </div>
+
+        <div class="about-grid">
+          <article class="info-card">
+            <h3>Who I am</h3>
+            <p>
+              I am a 3rd Semester B.Tech student in Computer Science and Information Technology (CSIT). I enjoy understanding programming concepts, working through problems logically, and improving my skills by actually writing and organizing code.
+            </p>
+          </article>
+
+          <article class="info-card">
+            <h3>What I’m exploring</h3>
+            <p>
+              My current learning journey includes C and C++ programming, Git and GitHub, VS Code tools, LeetCode problem solving, and the fundamentals of data structures and algorithms.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="projects">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Projects & Portfolio Journey</h2>
+          <p>These projects and activities represent my learning journey, coding practice, and hands-on development work.</p>
+        </div>
+
+        <div class="project-grid">
+          <div class="project-group">
+            <div class="project-group-label">Earlier portfolio-building journey · Activities 1–4</div>
+            <div class="project-group-grid">
+              <article class="project-card">
+                <div class="project-number">01 · GitHub Repository</div>
+                <h3>Hello World and Development Setup</h3>
+                <p>I created a Hello World C repository on GitHub as part of my initial programming and development setup. It helped me begin organizing and publishing my programming work.</p>
+                <a class="project-link" href="https://github.com/dbasammachoolageri-git/hello-world-c" target="_blank" rel="noopener noreferrer">View repository →</a>
+              </article>
+
+              <article class="project-card">
+                <div class="project-number">02 · Version Control</div>
+                <h3>Git and GitHub</h3>
+                <p>I learned the basic workflow of Git and GitHub, including creating repositories, making commits, tracking changes, and maintaining programming work in an organized way.</p>
+                <span class="project-link">Part of my development workflow</span>
+              </article>
+
+              <article class="project-card">
+                <div class="project-number">03 · VS Code Tools</div>
+                <h3>GitLens and Live Share</h3>
+                <p>I explored GitLens and Live Share in VS Code to understand how code changes can be tracked and how developers can collaborate while working on programming projects.</p>
+                <span class="project-link">Explored through practical use</span>
+              </article>
+
+              <article class="project-card">
+                <div class="project-number">04 · Problem Solving</div>
+                <h3>LeetCode Solutions Portfolio</h3>
+                <p>I created a public GitHub repository to document my LeetCode practice, with sections for arrays and strings, basic algorithms, linked lists, and stacks.</p>
+                <a class="project-link" href="https://github.com/dbasammachoolageri-git/leetcode-solutions" target="_blank" rel="noopener noreferrer">View repository →</a>
+              </article>
+            </div>
+          </div>
+
+          <div class="additional-project">
+            <div class="project-group-label">Additional coding-practice portfolio</div>
+            <article class="project-card">
+              <div class="project-number">05 · HackerRank Portfolio</div>
+              <h3>HackerRank 3rd Semester Portfolio</h3>
+              <p>A HackerRank algorithmic problem-solving portfolio containing five completed problems, C++ solutions, time and space complexity analysis, and documented problem-solving progress.</p>
+              <a class="project-link" href="https://github.com/dbasammachoolageri-git/HackerRank-3rdSem-Portfolio" target="_blank" rel="noopener noreferrer">View repository →</a>
+            </article>
+          </div>
+        </div>
+
+        <div class="journey">
+          <p><strong>Current practice:</strong> Two Sum, Reverse a String, Valid Anagram, Best Time to Buy and Sell Stock, Longest Common Prefix, Binary Search, and Valid Parentheses.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Technical Skills</h2>
+          <p>Skills I am developing through coursework, practice, and hands-on projects.</p>
+        </div>
+
+        <div class="skills" aria-label="Technical skills">
+          <span class="skill">C programming</span>
+          <span class="skill">C++ programming</span>
+          <span class="skill">Problem solving & logical thinking</span>
+          <span class="skill">Data structures & algorithms fundamentals</span>
+          <span class="skill">Git & GitHub</span>
+          <span class="skill">VS Code</span>
+          <span class="skill">LeetCode problem solving</span>
+          <span class="skill">Basic software development workflow</span>
+          <span class="skill">Documentation of programming projects</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="goals">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Learning & Career Goal</h2>
+          <p>My focus for the rest of my B.Tech journey.</p>
+        </div>
+
+        <div class="goal-card">
+          <p>
+            My goal is to strengthen my fundamentals in computer science, programming, mathematics, and problem solving during my B.Tech. Throughout my B.Tech, I want to consistently strengthen my programming and data structures and algorithms skills, solve increasingly challenging problems, build meaningful projects, and maintain a professional GitHub portfolio that reflects my continuous growth and technical abilities.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="contact-card">
+          <div>
+            <h2>Let’s connect through my work.</h2>
+            <p>My GitHub repositories are the best place to see my current programming practice and projects.</p>
+          </div>
+          <div class="buttons">
+            <a class="button primary" href="https://github.com/dbasammachoolageri-git" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
+            <a class="button" href="https://github.com/dbasammachoolageri-git/leetcode-solutions" target="_blank" rel="noopener noreferrer">LeetCode Repository</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <span>© 2026 Doddabasamma Chandrashekhar Hoolageri</span>
+      <span>Built as a simple standalone portfolio page.</span>
+    </div>
+  </footer>
+</body>
+</html>
